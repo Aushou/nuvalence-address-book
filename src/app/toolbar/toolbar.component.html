@@ -1,0 +1,10 @@
+<mat-toolbar>
+	<button mat-icon-button
+	color="primary"
+	aria-label="Icon button with a back icon"
+	*ngIf="isOnDetail()"
+	(click)="goBack()">
+		<mat-icon>arrow_back</mat-icon>
+	</button>
+	<span>Nuvalence Address Book</span>
+</mat-toolbar>

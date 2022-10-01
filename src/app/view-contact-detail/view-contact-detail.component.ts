@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactService } from '../contact.service';
@@ -15,7 +14,6 @@ export class ViewContactDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private contactService: ContactService,
-    private location: Location,
   ) { }
 
   ngOnInit(): void {
