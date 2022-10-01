@@ -1,1 +1,7 @@
-<p>view-contact-detail works!</p>
+<img src={{contact?.picture.large}} alt="An image of {{contact?.name.first}}">
+<h2>{{contact?.name.first}} {{contact?.name.last}}</h2>
+<h3>Contact Info</h3>
+<div>
+	<div>Phone: {{contact?.phone}}</div>
+	<div>Cell: {{contact?.cell}}</div>
+</div>
