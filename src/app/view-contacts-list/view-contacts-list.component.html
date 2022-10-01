@@ -1,0 +1,11 @@
+<h2> Contacts </h2>
+<mat-list>
+	<mat-list-item *ngFor="let contact of contacts">
+		<img src={{contact.picture.thumbnail}}
+			alt="Thumbnail image of {{contact.name.first}}">
+		<a routerLink="/contacts/{{contact.id.value}}">
+			{{contact.name.first}} {{contact.name.last}}
+		</a>
+		<mat-divider></mat-divider>
+	</mat-list-item>
+</mat-list>
