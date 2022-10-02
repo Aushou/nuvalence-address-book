@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ContactService } from '../contact.service';
 import { Contact } from '../models/contact';
 
@@ -9,7 +10,7 @@ import { Contact } from '../models/contact';
   styleUrls: ['./view-contact-detail.component.scss']
 })
 export class ViewContactDetailComponent implements OnInit {
-  @Input() contact?: Contact;
+  @Input() contact$?: Observable<Contact|undefined>;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,13 +18,7 @@ export class ViewContactDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getContact();
-  }
-
-  getContact(): void {
     const id = String(this.route.snapshot.paramMap.get('id'));
-    this.contactService.getContact(id)
-      .subscribe(contact => this.contact = contact)
+    this.contact$ = this.contactService.getContact(id);
   }
-
 }

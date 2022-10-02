@@ -1,7 +1,12 @@
-<img src={{contact?.picture.large}} alt="An image of {{contact?.name.first}}">
-<h2>{{contact?.name.first}} {{contact?.name.last}}</h2>
-<h3>Contact Info</h3>
-<div>
-	<div>Phone: {{contact?.phone}}</div>
-	<div>Cell: {{contact?.cell}}</div>
+<div *ngIf="contact$ | async as contact; else loading">
+	<img src={{contact?.picture.large}} alt="An image of {{contact?.name.first}}">
+	<h2>{{contact?.name.first}} {{contact?.name.last}}</h2>
+	<h3>Contact Info</h3>
+	<div>
+		<div>Phone: {{contact?.phone}}</div>
+		<div>Cell: {{contact?.cell}}</div>
+	</div>
 </div>
+<ng-template #loading>
+	<div>Loading...</div>
+</ng-template>

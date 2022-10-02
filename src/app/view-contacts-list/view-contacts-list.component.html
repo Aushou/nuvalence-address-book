@@ -1,6 +1,6 @@
 <h2> Contacts </h2>
 <mat-list>
-	<mat-list-item *ngFor="let contact of contacts">
+	<mat-list-item *ngFor="let contact of contacts$ | async">
 		<img src={{contact.picture.thumbnail}}
 			alt="Thumbnail image of {{contact.name.first}}">
 		<a routerLink="/contacts/{{contact.id.value}}">

@@ -9,17 +9,13 @@ import { Contact } from '../models/contact';
   styleUrls: ['./view-contacts-list.component.scss']
 })
 export class ViewContactsListComponent implements OnInit {
-  contacts: Contact[] = [];
+  contacts$?: Observable<Contact[]>;
 
-  constructor(private contactsService: ContactService) { }
-
-  ngOnInit(): void {
-    this.getContacts();
+  constructor(private contactsService: ContactService) { 
   }
 
-  getContacts(): void {
-    this.contactsService.getContacts()
-      .subscribe(contacts => this.contacts = contacts)
+  ngOnInit(): void {
+    this.contacts$ = this.contactsService.getContacts();
   }
 
 }

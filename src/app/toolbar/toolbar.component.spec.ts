@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 
@@ -14,7 +15,7 @@ describe('ToolbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ToolbarComponent ],
-      imports: [MatToolbarModule],
+      imports: [MatToolbarModule, MatIconModule],
       providers: [
         { provider: Location, useClass: MockLocation },
         { provider: Router, useClass: MockRouter }
