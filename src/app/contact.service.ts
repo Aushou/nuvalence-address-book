@@ -8,7 +8,8 @@ import { ContactResponse } from './models/contact-response';
   providedIn: 'root'
 })
 export class ContactService {
-  private urlContactsList = 'https://randomuser.me/api/?results=20&seed=nuvalence'
+  private urlContactsList = 'https://randomuser.me/api/?results=20&seed=nuvalence';
+  private urlContactBase = 'https://randomuser.me/api/?seed=nuvalence';
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +34,18 @@ export class ContactService {
         map(resp => resp.results.find(contact => contact.id.value === id)),
         catchError(this.handleError<Contact>(`getContact: ${id}`, undefined))
       )
+  }
+
+  getContactsPaginated(page: number, pageSize: number = 10): Observable<Contact[]> {
+    // WHY +1: Because randomuser.me uses base index 1 which is dumb so I'm adding
+    // it here so I can use the normal base index everywhere else.
+    const url = `${this.urlContactBase}&page=${page+1}&results=${pageSize}`;
+
+    return this.http.get<ContactResponse>(url)
+      .pipe(
+        map(resp => resp.results),
+        catchError(this.handleError<Contact[]>('getContacts', []))
+      );
   }
 
   private handleError<T>(operation: string, result?: T) {

@@ -12,7 +12,7 @@ describe('ViewContactsListComponent', () => {
   let mockContactService: any;
 
   beforeEach(async () => {
-    mockContactService = jasmine.createSpyObj('ContactService', ['getContacts']);
+    mockContactService = jasmine.createSpyObj('ContactService', ['getContactsPaginated']);
 
     await TestBed.configureTestingModule({
       providers: [{provide: ContactService, useValue: mockContactService }],
@@ -28,14 +28,14 @@ describe('ViewContactsListComponent', () => {
   });
 
   it('should display a list of contacts for each result from contactsService', () => {
-    mockContactService.getContacts.and.returnValue(of(CONTACTS.results));
+    mockContactService.getContactsPaginated.and.returnValue(of(CONTACTS.results));
     fixture.detectChanges();
     const contactElements = fixture.debugElement.queryAll(By.css('mat-list-item'));
     expect(contactElements.length).toBe(5);
   });
 
   it('should display a placeholder when there is no result yet', () => {
-    mockContactService.getContacts.and.returnValue(EMPTY);
+    mockContactService.getContactsPaginated.and.returnValue(EMPTY);
     fixture.detectChanges();
     const loadingElement = fixture.debugElement.query(By.css('div')).nativeElement;
     expect(loadingElement.innerHTML).toContain('Loading');

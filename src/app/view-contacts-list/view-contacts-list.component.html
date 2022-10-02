@@ -1,12 +1,23 @@
 <h2> Contacts </h2>
-<mat-nav-list *ngIf="contacts$ | async as contacts else loading">
-	<mat-list-item *ngFor="let contact of contacts" routerLink="/contacts/{{contact.id.value}}">
-		<img src={{contact.picture.thumbnail}}
-			alt="Thumbnail image of {{contact.name.first}}">
-			{{contact.name.first}} {{contact.name.last}}
-		<mat-divider></mat-divider>
-	</mat-list-item>
-</mat-nav-list>
+<div *ngIf="contacts$ | async as contacts else loading">
+	<mat-nav-list>
+		<mat-list-item *ngFor="let contact of contacts" routerLink="/contacts/{{contact.id.value}}">
+			<img src={{contact.picture.thumbnail}}
+				alt="Thumbnail image of {{contact.name.first}}">
+				{{contact.name.first}} {{contact.name.last}}
+			<mat-divider></mat-divider>
+		</mat-list-item>
+	</mat-nav-list>
+
+	<mat-paginator
+		[length]="100"
+		[pageSize]="paginatorSettings.pageSize"
+		[pageSizeOptions]="[5, 10, 25, 100]"
+		[pageIndex]="paginatorSettings.pageIndex"
+		(page)="onPageEvent($event)"
+		aria-label="Select page">
+	</mat-paginator>
+</div>
 <ng-template #loading>
 	<div>Loading...</div>
 </ng-template>
