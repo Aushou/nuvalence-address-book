@@ -1,12 +1,16 @@
-<div *ngIf="contact$ | async as contact; else loading">
-	<img src={{contact?.picture.large}} alt="An image of {{contact?.name.first}}">
-	<h2>{{contact?.name.first}} {{contact?.name.last}}</h2>
-	<h3>Contact Info</h3>
-	<div>
-		<div>Phone: {{contact?.phone}}</div>
-		<div>Cell: {{contact?.cell}}</div>
+<mat-card class="card-container center">
+	<div *ngIf="contact$ | async as contact; else loading">
+		<mat-card-title>{{contact?.name.first}} {{contact?.name.last}}</mat-card-title>
+		<mat-card-content>
+			<img src={{contact?.picture.large}} alt="An image of {{contact?.name.first}}" class="center">
+			<h3>Contact Info</h3>
+			<div>
+				<div>Phone: {{contact?.phone}}</div>
+				<div>Cell: {{contact?.cell}}</div>
+			</div>
+		</mat-card-content>
 	</div>
-</div>
-<ng-template #loading>
-	<div>Loading...</div>
-</ng-template>
+	<ng-template #loading>
+		<mat-spinner class="center center-vertical"></mat-spinner>
+	</ng-template>
+</mat-card>

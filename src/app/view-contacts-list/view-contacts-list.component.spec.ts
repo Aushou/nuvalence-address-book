@@ -37,7 +37,7 @@ describe('ViewContactsListComponent', () => {
   it('should display a placeholder when there is no result yet', () => {
     mockContactService.getContactsPaginated.and.returnValue(EMPTY);
     fixture.detectChanges();
-    const loadingElement = fixture.debugElement.query(By.css('div')).nativeElement;
-    expect(loadingElement.innerHTML).toContain('Loading');
+    const loadingElement = fixture.debugElement.query(By.css('mat-spinner')).nativeElement;
+    expect(loadingElement).toBeDefined();
   });
 });

@@ -1,0 +1,30 @@
+$space-between-items: 10px;
+
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center-vertical {
+	margin-top: 25%
+}
+
+.view-contacts-list {
+
+	max-width: 800px;
+
+	img {
+		padding-right: 10px;
+		border-radius: 50%;
+	}
+
+	.list-item {
+		margin-top: $space-between-items;
+	}
+	
+	.list-item-divider {
+		bottom: -($space-between-items/2) !important
+	}
+}

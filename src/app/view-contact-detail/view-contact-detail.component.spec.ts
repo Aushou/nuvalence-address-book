@@ -36,7 +36,7 @@ describe('ViewContactDetailComponent', () => {
     mockContactService.getContact.and.returnValue(of(CONTACTS.results[0]));
     fixture.detectChanges();
 
-    const loadingElement = fixture.debugElement.query(By.css('h2')).nativeElement;
+    const loadingElement = fixture.debugElement.query(By.css('mat-card-title')).nativeElement;
     expect(loadingElement.innerHTML).toContain('Stanimir');
   })
 
@@ -44,8 +44,8 @@ describe('ViewContactDetailComponent', () => {
     mockContactService.getContact.and.returnValue(EMPTY);
     fixture.detectChanges();
     
-    const loadingElement = fixture.debugElement.query(By.css('div')).nativeElement;
-    expect(loadingElement.innerHTML).toContain('Loading');
+    const loadingElement = fixture.debugElement.query(By.css('mat-spinner')).nativeElement;
+    expect(loadingElement).toBeDefined();
   });
 });
 
