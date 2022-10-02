@@ -1,6 +1,6 @@
 <h2> Contacts </h2>
-<mat-list>
-	<mat-list-item *ngFor="let contact of contacts$ | async">
+<mat-list *ngIf="contacts$ | async as contacts else loading">
+	<mat-list-item *ngFor="let contact of contacts">
 		<img src={{contact.picture.thumbnail}}
 			alt="Thumbnail image of {{contact.name.first}}">
 		<a routerLink="/contacts/{{contact.id.value}}">
@@ -9,3 +9,6 @@
 		<mat-divider></mat-divider>
 	</mat-list-item>
 </mat-list>
+<ng-template #loading>
+	<div>Loading...</div>
+</ng-template>
