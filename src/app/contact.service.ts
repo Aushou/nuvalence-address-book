@@ -8,8 +8,8 @@ import { ContactResponse } from './models/contact-response';
   providedIn: 'root'
 })
 export class ContactService {
-  private urlContactsList = 'https://randomuser.me/api/?results=20&seed=nuvalence';
-  private urlContactBase = 'https://randomuser.me/api/?seed=nuvalence';
+  private urlContactsList = 'https://randomuser.me/api/?results=100&seed=nuvalence&inc=name,picture,phone,cell,login';
+  private urlContactBase = 'https://randomuser.me/api/?seed=nuvalence&inc=name,picture,phone,cell,login';
 
   constructor(private http: HttpClient) { }
 
@@ -31,7 +31,7 @@ export class ContactService {
   getContact(id: string): Observable<Contact | undefined> {
     return this.http.get<ContactResponse>(this.urlContactsList)
       .pipe(
-        map(resp => resp.results.find(contact => contact.id.value === id)),
+        map(resp => resp.results.find(contact => contact.login.username === id)),
         catchError(this.handleError<Contact>(`getContact: ${id}`, undefined))
       )
   }

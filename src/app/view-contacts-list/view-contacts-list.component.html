@@ -4,7 +4,7 @@
 		<mat-nav-list>
 			<mat-list-item
 				*ngFor="let contact of contacts"
-				routerLink="/contacts/{{contact.id.value}}"
+				routerLink="/contacts/{{contact.login.username}}"
 				class="list-item">
 				<img src={{contact.picture.thumbnail}}
 					alt="Thumbnail image of {{contact.name.first}}">

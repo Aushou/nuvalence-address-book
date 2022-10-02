@@ -33,7 +33,7 @@ describe('ContactService', () => {
         expect(contacts.length).toBe(5);
         expect(contacts).toEqual(mockContacts.results)
       });
-      const req = httpTestingController.expectOne('https://randomuser.me/api/?results=20&seed=nuvalence');
+      const req = httpTestingController.expectOne('https://randomuser.me/api/?results=100&seed=nuvalence');
       expect(req.request.method).toBe('GET');
       req.flush(mockContacts);
     });
@@ -42,7 +42,7 @@ describe('ContactService', () => {
       service.getContacts().subscribe(contacts => {
         expect(contacts.length).toBe(0);
       });
-      const req = httpTestingController.expectOne('https://randomuser.me/api/?results=20&seed=nuvalence');
+      const req = httpTestingController.expectOne('https://randomuser.me/api/?results=100&seed=nuvalence');
       req.flush('404 Not Found', { status: 404, statusText: 'Not Found' });
     })
   });
@@ -87,13 +87,13 @@ describe('ContactService', () => {
 
 
   describe('Get Contact', () => {
-    it('should return an Observable of a list of contacts on success', () => {
+    it('should return an Observable of a contact on success', () => {
       const mockContacts: ContactResponse = CONTACTS
-      service.getContact('535843832').subscribe(contact => {
+      service.getContact('orangeduck462').subscribe(contact => {
         expect(contact).toBeDefined();
         expect(contact).toEqual(mockContacts.results[0])
       });
-      const req = httpTestingController.expectOne('https://randomuser.me/api/?results=20&seed=nuvalence');
+      const req = httpTestingController.expectOne('https://randomuser.me/api/?results=100&seed=nuvalence');
       expect(req.request.method).toBe('GET');
       req.flush(mockContacts);
     });
