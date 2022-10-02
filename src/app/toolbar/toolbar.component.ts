@@ -17,7 +17,6 @@ export class ToolbarComponent {
 
   isOnDetail(): boolean {
     const routerState = this.router.routerState;
-    console.log('URL: ', routerState.snapshot);
     return routerState.snapshot.url !== '/contacts';
   }
 

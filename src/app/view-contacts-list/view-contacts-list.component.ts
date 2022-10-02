@@ -11,8 +11,7 @@ import { Contact } from '../models/contact';
 export class ViewContactsListComponent implements OnInit {
   contacts$?: Observable<Contact[]>;
 
-  constructor(private contactsService: ContactService) { 
-  }
+  constructor(private contactsService: ContactService) {}
 
   ngOnInit(): void {
     this.contacts$ = this.contactsService.getContacts();
