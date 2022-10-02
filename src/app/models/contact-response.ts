@@ -7,7 +7,7 @@ export interface ContactResponse {
 
 export interface ContactResponseInfo {
 	seed: string,
-	results: string,
-	page: string,
+	results: number,
+	page: number,
 	version: string,
 }
