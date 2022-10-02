@@ -20,6 +20,13 @@ export class ContactService {
       );
   }
 
+  /**
+   * Returns a single user based on id. Filters through the whole list though
+   * because it doesn't seem like the API actually supports getting a single specific
+   * user, so we're making much bigger calls than I'd like to.
+   * @param id 
+   * @returns 
+   */
   getContact(id: string): Observable<Contact | undefined> {
     return this.http.get<ContactResponse>(this.urlContactsList)
       .pipe(

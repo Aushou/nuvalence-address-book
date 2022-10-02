@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { ContactService } from '../contact.service';
+import { CONTACTS } from '../mocks/contacts.mock';
 
 import { ViewContactsListComponent } from './view-contacts-list.component';
 
@@ -8,6 +11,7 @@ describe('ViewContactsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [{provide: ContactService, useClass: MockContactService }],
       declarations: [ ViewContactsListComponent ]
     })
     .compileComponents();
@@ -21,3 +25,9 @@ describe('ViewContactsListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockContactService {
+  getContacts() {
+    return of(CONTACTS.results);
+  }
+}

@@ -6,7 +6,7 @@ import { ViewContactsListComponent } from './view-contacts-list/view-contacts-li
 
 const routes: Routes = [
   { path: '', redirectTo: '/contacts', pathMatch: 'full' },
-  { path: 'contacts', component: ViewContactsListComponent },
+  { path: 'contacts', component: ViewContactsListComponent, title: 'Nuvalence Address Book' },
   { path: 'contacts/:id', component: ViewContactDetailComponent },
   { path: 'placeholder', component: PlaceholderComponent },
 ];
